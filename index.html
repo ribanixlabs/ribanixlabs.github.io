@@ -3,14 +3,255 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ribanix Labs</title>
-<meta name="description" content="Ribanix Labs is an independent software studio in Kolkata, India. Maker of Mimicore, an AI voice changer, voice cloning and text to speech app for Windows.">
-<link rel="canonical" href="https://ribanixlabs.github.io/">
-<style>body{margin:0;font:17px/1.6 "Segoe UI",system-ui,sans-serif;background:#07080d;color:#eef1f8;display:grid;place-items:center;min-height:100vh}main{max-width:560px;padding:32px}h1{margin:0 0 6px;font-size:34px}a{color:#9aa3ff}.muted{color:#9aa3b8}</style>
+<title>Ribanix Labs — Software that earns its place</title>
+<meta name="description" content="Ribanix Labs is an independent software studio in Kolkata, India, building RevCrank (a free motorcycle ride app), RibaLedger (shared live ledgers for business partners) and Mimicore (a private AI voice studio for Windows).">
+<link rel="canonical" href="https://ribanixlabs.pages.dev/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0b0b12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ribanix Labs">
+<meta property="og:description" content="An independent software studio in Kolkata building RevCrank, RibaLedger and Mimicore.">
+<meta property="og:url" content="https://ribanixlabs.pages.dev/">
+<meta property="og:image" content="https://ribanixlabs.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ribanix Labs","url":"https://ribanixlabs.pages.dev/","logo":"https://ribanixlabs.pages.dev/favicon.svg","email":"ribanixlabs@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Kolkata","addressCountry":"IN"},"sameAs":["https://github.com/ribanixlabs","https://ribanixlabs.github.io/"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b12;--bg2:#12121c;--text:#f3f2f8;--muted:rgba(232,230,245,.68);--edge:rgba(255,255,255,.12);--card:rgba(255,255,255,.05);
+  --a:#7c5cff;--b:#22d3ee;--c:#ffb86b;
+  --rc:#ff7a3d;--rl:#2fd08a;--mc:#9b6bff;
+  --radius:24px;--ink:#0b0b12;
+}
+@media (prefers-color-scheme:light){:root{--bg:#f6f4ee;--bg2:#ffffff;--text:#13121a;--muted:rgba(19,18,26,.68);--edge:rgba(19,18,26,.12);--card:rgba(255,255,255,.7);--ink:#fff}}
+:root[data-theme=dark]{--bg:#0b0b12;--bg2:#12121c;--text:#f3f2f8;--muted:rgba(232,230,245,.68);--edge:rgba(255,255,255,.12);--card:rgba(255,255,255,.05);--ink:#0b0b12}
+:root[data-theme=light]{--bg:#f6f4ee;--bg2:#ffffff;--text:#13121a;--muted:rgba(19,18,26,.68);--edge:rgba(19,18,26,.12);--card:rgba(255,255,255,.7);--ink:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.serif{font-family:Fraunces,Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.02em}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+/* backdrop */
+.mesh{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--bg)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;will-change:transform}
+.blob.one{width:46vmax;height:46vmax;left:-12vmax;top:-14vmax;background:var(--a);animation:drift1 22s ease-in-out infinite alternate}
+.blob.two{width:40vmax;height:40vmax;right:-14vmax;top:8vmax;background:var(--b);opacity:.38;animation:drift2 26s ease-in-out infinite alternate}
+.blob.three{width:36vmax;height:36vmax;left:22vmax;bottom:-20vmax;background:var(--c);opacity:.3;animation:drift3 30s ease-in-out infinite alternate}
+@media (prefers-color-scheme:light){.blob{opacity:.35}.blob.two{opacity:.28}.blob.three{opacity:.3}}
+:root[data-theme=light] .blob{opacity:.35}:root[data-theme=dark] .blob{opacity:.55}
+@keyframes drift1{to{transform:translate(12vmax,10vmax) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-10vmax,12vmax) scale(.9)}}
+@keyframes drift3{to{transform:translate(-14vmax,-8vmax) scale(1.2)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.spot{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(124,92,255,.22),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%;transition:opacity .3s}
+
+/* nav */
+nav{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1140px;padding:0 14px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px 10px 18px;border:1px solid var(--edge);border-radius:999px;background:var(--card);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;letter-spacing:-.01em}
+.brand svg{width:28px;height:28px}
+.links{display:flex;align-items:center;gap:4px}
+.links a{padding:8px 14px;border-radius:999px;text-decoration:none;font-size:.95rem;color:var(--muted);transition:.2s}
+.links a:hover{color:var(--text);background:var(--edge)}
+.pill{background:var(--text)!important;color:var(--bg)!important;font-weight:600}
+.pill:hover{opacity:.88}
+#theme{border:1px solid var(--edge);background:transparent;color:var(--text);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem}
+@media(max-width:720px){.links a:not(.pill){display:none}}
+
+/* hero */
+.hero{padding:96px 0 70px;text-align:center}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid var(--edge);border-radius:999px;background:var(--card);font-size:.85rem;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--rl);box-shadow:0 0 0 0 rgba(47,208,138,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(47,208,138,0)}100%{box-shadow:0 0 0 0 rgba(47,208,138,0)}}
+h1{font-size:clamp(2.6rem,7.4vw,5.6rem);line-height:1.02;margin:.45em auto .3em;max-width:15ch}
+.grad{background:linear-gradient(100deg,var(--a),var(--b) 55%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 8s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.lead{max-width:56ch;margin:0 auto;color:var(--muted);font-size:1.18rem}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:600;border:1px solid var(--edge);transition:transform .2s,box-shadow .2s}
+.btn.main{background:var(--text);color:var(--bg);border-color:transparent}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -14px rgba(124,92,255,.7)}
+
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--edge);margin:20px 0 0;padding:16px 0;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:44px;width:max-content;animation:slide 32s linear infinite;color:var(--muted);font-family:Fraunces,Georgia,serif;font-size:1.5rem;white-space:nowrap}
+.track span:nth-child(even){color:var(--a)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:92px 0 10px}
+.eyebrow{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.1;margin:.3em 0 .5em;max-width:20ch}
+.sub{color:var(--muted);max-width:60ch;font-size:1.1rem;margin:0}
+
+/* products */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+@media(max-width:940px){.grid{grid-template-columns:1fr}}
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--edge);border-radius:var(--radius);background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:26px;overflow:hidden;text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),var(--tint),transparent 60%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-6px);border-color:var(--tint2)}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.visual{height:150px;border-radius:16px;margin-bottom:22px;display:grid;place-items:center;border:1px solid var(--edge);background:linear-gradient(160deg,var(--tint),transparent 80%),var(--bg2);overflow:hidden}
+.card h3{font-size:1.7rem;margin:0 0 6px}
+.kind{color:var(--accent);font-weight:600;font-size:.9rem;margin:0 0 12px}
+.card p{margin:0 0 18px;color:var(--muted);font-size:1rem;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chips span{font-size:.78rem;padding:4px 11px;border-radius:999px;border:1px solid var(--edge);color:var(--muted)}
+.go{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--accent)}
+.go i{font-style:normal;transition:transform .25s}.card:hover .go i{transform:translateX(5px)}
+.rc{--accent:var(--rc);--tint:rgba(255,122,61,.22);--tint2:rgba(255,122,61,.6)}
+.rl{--accent:var(--rl);--tint:rgba(47,208,138,.2);--tint2:rgba(47,208,138,.6)}
+.mc{--accent:var(--mc);--tint:rgba(155,107,255,.24);--tint2:rgba(155,107,255,.65)}
+/* visuals */
+.gauge path.bg{stroke:var(--edge)}
+.needle{transform-origin:60px 70px;animation:sweep 4.5s ease-in-out infinite alternate}
+@keyframes sweep{from{transform:rotate(-70deg)}to{transform:rotate(55deg)}}
+.lines{display:grid;gap:9px;width:70%}
+.lines div{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);border-bottom:1px dashed var(--edge);padding-bottom:6px}
+.lines b{color:var(--rl);font-weight:600}
+.lines div:nth-child(2) b{color:var(--text)}
+.wave{display:flex;gap:5px;align-items:center;height:70px}
+.wave i{width:6px;border-radius:6px;background:var(--mc);height:20px;animation:bar 1.1s ease-in-out infinite}
+.wave i:nth-child(2n){animation-delay:.15s;background:#c4a6ff}.wave i:nth-child(3n){animation-delay:.3s}.wave i:nth-child(5n){animation-delay:.45s}
+@keyframes bar{0%,100%{height:12px}50%{height:64px}}
+
+/* principles */
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+@media(max-width:940px){.pr{grid-template-columns:1fr}}
+.p{padding:28px;border-radius:var(--radius);border:1px solid var(--edge);background:var(--card)}
+.p .n{font-family:Fraunces,Georgia,serif;font-size:2.6rem;background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.p h3{margin:.5em 0 .3em;font-size:1.25rem}.p p{margin:0;color:var(--muted);font-size:1rem}
+
+/* contact */
+.contact{margin:96px 0 40px;padding:56px 28px;border-radius:32px;border:1px solid var(--edge);text-align:center;background:linear-gradient(135deg,rgba(124,92,255,.22),rgba(34,211,238,.14) 55%,rgba(255,184,107,.16)),var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.contact h2{margin-inline:auto}
+.mail{font-family:Fraunces,Georgia,serif;font-size:clamp(1.4rem,4vw,2.4rem);text-decoration:none;border-bottom:2px solid var(--a)}
+footer{padding:30px 0 60px;color:var(--muted);font-size:.92rem}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--edge);padding-top:24px}
+.foot a{margin-left:18px;text-decoration:none}.foot a:first-child{margin-left:0}.foot a:hover{color:var(--text)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
 </head>
-<body><main>
-<h1>Ribanix Labs</h1>
-<p class="muted">An independent software studio in Kolkata, India.</p>
-<p><b><a href="/mimicore-app/">Mimicore</a></b>: AI voice changer, voice cloning and text to speech for Windows. Clone. Change. Create.</p>
-<p><a href="/mimicore-app/">Website</a> &middot; <a href="/mimicore-app/guide/">User guide</a> &middot; <a href="/mimicore-app/contact/">Contact</a></p>
-</main></body></html>
+<body>
+<div class="mesh" aria-hidden="true"><div class="blob one"></div><div class="blob two"></div><div class="blob three"></div></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
+
+<nav><div class="bar">
+  <a class="brand" href="#top" aria-label="Ribanix Labs home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset=".6" stop-color="#22d3ee"/><stop offset="1" stop-color="#ffb86b"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#g)"/><path d="M9 23V9h7.2c3 0 4.8 1.5 4.8 4 0 2-1.1 3.3-3 3.8L22.5 23h-3.4l-3.6-5H12.3v5zM12.3 14.9h3.6c1.2 0 1.8-.5 1.8-1.4s-.6-1.4-1.8-1.4h-3.6z" fill="#0b0b12"/></svg>
+    Ribanix Labs
+  </a>
+  <div class="links">
+    <a href="#products">Products</a><a href="#about">Approach</a>
+    <button id="theme" aria-label="Switch light and dark theme">◐</button>
+    <a class="pill" href="#contact">Say hello</a>
+  </div>
+</div></nav>
+
+<main id="top">
+<header class="hero wrap">
+  <span class="tag rv"><span class="dot"></span> Three products live, more on the way</span>
+  <h1 class="serif rv d1">Software that <span class="grad">earns its place</span> in your day.</h1>
+  <p class="lead rv d2">Ribanix Labs is an independent software studio in Kolkata, India. We build focused tools: one for riders, one for business partners who share books, and one for anyone who works with their voice.</p>
+  <div class="cta rv d2">
+    <a class="btn main" href="#products">Explore the products ↓</a>
+    <a class="btn" href="#contact">Work with us</a>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div class="track">
+  <span>Ride together</span><span>✦</span><span>Keep honest books</span><span>✦</span><span>Clone a voice</span><span>✦</span><span>Private by default</span><span>✦</span><span>Built for real use</span><span>✦</span>
+  <span>Ride together</span><span>✦</span><span>Keep honest books</span><span>✦</span><span>Clone a voice</span><span>✦</span><span>Private by default</span><span>✦</span><span>Built for real use</span><span>✦</span>
+</div></div>
+
+<section id="products" class="wrap">
+  <div class="eyebrow rv">What we build</div>
+  <h2 class="serif rv">Three products. Each does one thing well.</h2>
+  <p class="sub rv">Every product has its own look and its own home. Pick one to open it.</p>
+
+  <div class="grid">
+    <a class="card rc rv" href="https://revcrank.pages.dev" target="_blank" rel="noopener">
+      <div class="visual"><svg class="gauge" width="120" height="86" viewBox="0 0 120 86" fill="none"><path class="bg" d="M12 74a48 48 0 0 1 96 0" stroke-width="9" stroke-linecap="round"/><path d="M12 74a48 48 0 0 1 60-46" stroke="#ff7a3d" stroke-width="9" stroke-linecap="round"/><g class="needle"><path d="M60 70L60 30" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g><circle cx="60" cy="70" r="7" fill="#ff7a3d"/></svg></div>
+      <h3 class="serif">RevCrank</h3>
+      <p class="kind">A free motorcycle ride app</p>
+      <p>Record every ride, ride as a pack with a live map and push-to-talk voice, and keep talking when the signal drops. A garage for 1,200+ bikes, route planning and crash SOS. No ads.</p>
+      <div class="chips"><span>Android</span><span>iPhone beta</span><span>Free</span><span>Hindi</span></div>
+      <span class="go">Open RevCrank <i>→</i></span>
+    </a>
+
+    <a class="card rl rv d1" href="https://ribaledger.pages.dev" target="_blank" rel="noopener">
+      <div class="visual"><div class="lines"><div><span>Purchase</span><b>₹ 84,900</b></div><div><span>Payout · UTR 4821</span><b>− ₹ 60,000</b></div><div><span>Confirmed by both sides</span><b>✓</b></div></div></div>
+      <h3 class="serif">RibaLedger</h3>
+      <p class="kind">Shared, live ledger books</p>
+      <p>One book for business partners and suppliers. Either side adds entries, the other confirms, and every change is kept in a tamper-evident audit trail. Try the demo with no account.</p>
+      <div class="chips"><span>Web</span><span>Installable</span><span>Free in early access</span></div>
+      <span class="go">Open RibaLedger <i>→</i></span>
+    </a>
+
+    <a class="card mc rv d2" href="https://mimicore.pages.dev" target="_blank" rel="noopener">
+      <div class="visual"><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <h3 class="serif">Mimicore</h3>
+      <p class="kind">A private AI voice studio</p>
+      <p>Clone a voice in seconds, change it live, train your own, turn text into speech in 23 languages and dub video offline. Everything runs on your own PC.</p>
+      <div class="chips"><span>Windows</span><span>Runs locally</span><span>Free plan</span></div>
+      <span class="go">Open Mimicore <i>→</i></span>
+    </a>
+  </div>
+</section>
+
+<section id="about" class="wrap">
+  <div class="eyebrow rv">How we work</div>
+  <h2 class="serif rv">A short list of things we will not compromise on.</h2>
+  <div class="pr">
+    <div class="p rv"><div class="n">01</div><h3>Private by default</h3><p>Your rides stay on your phone, your voice stays on your PC, your books are visible only to the partners in them. We collect only what a feature needs.</p></div>
+    <div class="p rv d1"><div class="n">02</div><h3>Built for real use</h3><p>We design for a rider in a ghat with no signal and a trader reconciling at night, not for a demo. Features get tested on real devices before we claim them.</p></div>
+    <div class="p rv d2"><div class="n">03</div><h3>Honest about limits</h3><p>If something is an aid and not a guarantee, or is still a beta, the product says so. Plain language, no dark patterns, no ads in the apps.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="contact rv">
+    <div class="eyebrow">Get in touch</div>
+    <h2 class="serif">Questions, feedback or an idea to build together?</h2>
+    <p class="sub" style="margin:0 auto 26px">We read every message. Write to us and we will reply.</p>
+    <a class="mail" href="mailto:ribanixlabs@gmail.com">ribanixlabs@gmail.com</a>
+    <div class="cta"><a class="btn main" href="mailto:ribanixlabs@gmail.com?subject=Hello%20Ribanix%20Labs">Send an email</a><a class="btn" href="https://github.com/ribanixlabs" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><div class="foot">
+  <span>© <span id="yr">2026</span> Ribanix Labs. All rights reserved.</span>
+  <span><a href="https://revcrank.pages.dev/privacy">RevCrank privacy</a><a href="https://revcrank.pages.dev/terms">Terms</a><a href="#top">Back to top ↑</a></span>
+</div></div></footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('rl-theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+  btn.onclick=function(){
+    var dark=root.getAttribute('data-theme')?root.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+    var n=dark?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('rl-theme',n)}catch(e){}
+  };
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  var spot=document.getElementById('spot');
+  addEventListener('pointermove',function(e){spot.style.left=e.clientX+'px';spot.style.top=e.clientY+'px'},{passive:true});
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+  });
+})();
+</script>
+</body>
+</html>
