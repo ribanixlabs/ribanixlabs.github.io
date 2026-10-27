@@ -62,7 +62,8 @@ nav{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1140px;padd
 @media(max-width:720px){.links a:not(.pill){display:none}}
 
 /* hero */
-.hero{padding:96px 0 70px;text-align:center}
+.hero{padding:96px 22px 70px;text-align:center}
+@media(max-width:720px){.hero{padding:64px 22px 48px}section{padding-top:64px}.contact{padding:40px 20px;margin-top:64px}.card{padding:22px}}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid var(--edge);border-radius:999px;background:var(--card);font-size:.85rem;color:var(--muted)}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--rl);box-shadow:0 0 0 0 rgba(47,208,138,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(47,208,138,0)}100%{box-shadow:0 0 0 0 rgba(47,208,138,0)}}
@@ -82,7 +83,7 @@ h1{font-size:clamp(2.6rem,7.4vw,5.6rem);line-height:1.02;margin:.45em auto .3em;
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* sections */
-section{padding:92px 0 10px}
+section{padding:92px 0 10px;scroll-margin-top:84px}
 .eyebrow{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
 h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.1;margin:.3em 0 .5em;max-width:20ch}
 .sub{color:var(--muted);max-width:60ch;font-size:1.1rem;margin:0}
@@ -97,7 +98,7 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.1;margin:.3em 0 .5em;max-wid
 .card>*{position:relative}
 .visual{height:150px;border-radius:16px;margin-bottom:22px;display:grid;place-items:center;border:1px solid var(--edge);background:linear-gradient(160deg,var(--tint),transparent 80%),var(--bg2);overflow:hidden}
 .card h3{font-size:1.7rem;margin:0 0 6px}
-.kind{color:var(--accent);font-weight:600;font-size:.9rem;margin:0 0 12px}
+.card p.kind{color:var(--accent);font-weight:600;font-size:.9rem;margin:0 0 12px;flex:none}
 .card p{margin:0 0 18px;color:var(--muted);font-size:1rem;flex:1}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .chips span{font-size:.78rem;padding:4px 11px;border-radius:999px;border:1px solid var(--edge);color:var(--muted)}
@@ -160,7 +161,7 @@ footer{padding:30px 0 60px;color:var(--muted);font-size:.92rem}
 
 <main id="top">
 <header class="hero wrap">
-  <span class="tag rv"><span class="dot"></span> Three products live, more on the way</span>
+  <span class="tag rv"><span class="dot"></span> Three products, all live</span>
   <h1 class="serif rv d1">Software that <span class="grad">earns its place</span> in your day.</h1>
   <p class="lead rv d2">Ribanix Labs is an independent software studio in Kolkata, India. We build focused tools: one for riders, one for business partners who share books, and one for anyone who works with their voice.</p>
   <div class="cta rv d2">
