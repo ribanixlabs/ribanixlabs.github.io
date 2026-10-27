@@ -135,6 +135,20 @@ footer{padding:30px 0 60px;color:var(--muted);font-size:.92rem}
 .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--edge);padding-top:24px}
 .foot a{margin-left:18px;text-decoration:none}.foot a:first-child{margin-left:0}.foot a:hover{color:var(--text)}
 
+
+/* support */
+.support{margin:28px 0 0;padding:44px 28px;border-radius:32px;border:1px solid var(--edge);text-align:center;background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.support h2{margin-inline:auto}.support .cta{margin-top:24px}
+.btn.ghost{background:transparent;color:var(--text)}
+.upi-modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(5,5,10,.6);backdrop-filter:blur(6px);padding:18px}
+.upi-modal[hidden]{display:none}
+.upi-card{position:relative;width:min(380px,100%);padding:28px 24px;border-radius:26px;border:1px solid var(--edge);background:var(--bg2);text-align:center}
+.upi-card h3{margin:0 0 6px;font-size:1.35rem}.upi-card p{margin:.2em 0;color:var(--muted);font-size:.95rem}
+.upi-card img{background:#fff;border-radius:14px;margin:14px auto;display:block;max-width:100%;height:auto}
+.upi-id{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.upi-close{position:absolute;right:12px;top:8px;border:0;background:transparent;color:var(--text);font-size:1.8rem;cursor:pointer;line-height:1}
+@media(max-width:720px){.support{padding:34px 18px}}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -153,7 +167,7 @@ footer{padding:30px 0 60px;color:var(--muted);font-size:.92rem}
     Ribanix Labs
   </a>
   <div class="links">
-    <a href="#products">Products</a><a href="#about">Approach</a>
+    <a href="#products">Products</a><a href="#about">Approach</a><a href="#support">Support</a>
     <button id="theme" aria-label="Switch light and dark theme">◐</button>
     <a class="pill" href="#contact">Say hello</a>
   </div>
@@ -220,6 +234,19 @@ footer{padding:30px 0 60px;color:var(--muted);font-size:.92rem}
   </div>
 </section>
 
+<section id="support" class="wrap">
+  <div class="support rv">
+    <div class="eyebrow">Support</div>
+    <h2 class="serif">Keep the free tools free.</h2>
+    <p class="sub" style="margin:0 auto">RevCrank has no ads and no sign-up, and RibaLedger is free in early access. If our apps help you, a small contribution pays for the servers behind them.</p>
+    <div class="cta">
+      <a class="btn main" href="https://www.paypal.me/AnirbanMukherjeeIN" target="_blank" rel="noopener">Donate with PayPal</a>
+      <a class="btn ghost" id="upi-btn" href="upi://pay?pa=ribanixlab%40ptaxis&amp;pn=Ribanix%20Labs&amp;cu=INR&amp;tn=Support%20Ribanix%20Labs" hidden>Donate with UPI</a>
+    </div>
+  </div>
+</section>
+<div id="upi-modal" class="upi-modal" hidden role="dialog" aria-modal="true" aria-labelledby="upi-title"><div class="upi-card"><button type="button" class="upi-close" id="upi-close" aria-label="Close">&times;</button><h3 id="upi-title">Donate with UPI</h3><p>Scan the QR with any UPI app, or pay to this UPI ID.</p><img src="upi-qr.png" alt="UPI QR code for ribanixlab@ptaxis" width="260" height="260"><div class="upi-id"><code id="upi-id">ribanixlab@ptaxis</code><button type="button" class="btn ghost" id="upi-copy" style="padding:8px 16px">Copy</button></div></div></div>
+
 <section id="contact" class="wrap">
   <div class="contact rv">
     <div class="eyebrow">Get in touch</div>
@@ -237,6 +264,11 @@ footer{padding:30px 0 60px;color:var(--muted);font-size:.92rem}
 </div></div></footer>
 
 <script>
+(function(){var b=document.getElementById('upi-btn');if(!b)return;var phone=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent),m=document.getElementById('upi-modal');function close(){m.hidden=true}
+b.addEventListener('click',function(e){if(phone)return;e.preventDefault();m.hidden=false});
+document.getElementById('upi-close').addEventListener('click',close);m.addEventListener('click',function(e){if(e.target===m)close()});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+document.getElementById('upi-copy').addEventListener('click',function(){var t=document.getElementById('upi-id').textContent,c=this;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied'}).catch(function(){c.textContent='Press Ctrl+C'})});
+fetch('/cdn-cgi/trace',{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var x=/^loc=([A-Z]{2})$/m.exec(t);if(x&&x[1]==='IN')b.hidden=false}).catch(function(){try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone;if(z==='Asia/Kolkata'||z==='Asia/Calcutta')b.hidden=false}catch(e){}})})();
 (function(){
   document.getElementById('yr').textContent=new Date().getFullYear();
   var root=document.documentElement,btn=document.getElementById('theme');
